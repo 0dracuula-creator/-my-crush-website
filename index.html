@@ -1,304 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hey lee♥️.. A Little Something 💌</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Lee ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #eadcff, #d8f3ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background glow */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 105, 180, 0.25);
+    border-radius: 50%;
+    filter: blur(80px);
+    top: -100px;
+    left: -100px;
+    animation: glow 6s infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: rgba(170, 100, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(80px);
+    bottom: -100px;
+    right: -100px;
+    animation: glow 6s infinite alternate-reverse;
+}
+
+@keyframes glow {
+    from {
+        transform: scale(1);
     }
-    body {
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffd6e7, #e9d5ff, #dbeafe);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      color: #333;
+    to {
+        transform: scale(1.4);
     }
-    .card {
-      width: 90%;
-      max-width: 430px;
-      min-height: 520px;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      border-radius: 30px;
-      padding: 40px 28px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-    .emoji {
-      font-size: 65px;
-      margin-bottom: 20px;
-      animation: float 2s ease-in-out infinite;
-    }
-    h1 {
-      font-size: 30px;
-      margin-bottom: 18px;
-      color: #d63384;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    button {
-      border: none;
-      border-radius: 50px;
-      padding: 14px 25px;
-      margin: 7px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.25s;
-    }
-    .next {
-      background: #d63384;
-      color: white;
-    }
-    .next:hover {
-      transform: scale(1.06);
-      background: #b82b70;
-    }
-    .yes {
-      background: #ff4f91;
-      color: white;
-    }
-    .yes:hover {
-      transform: scale(1.08);
-    }
-    .maybe {
-      background: #eee;
-      color: #555;
-    }
-    .maybe:hover {
-      transform: scale(1.05);
-    }
-    .page {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-    .page.active {
-      display: block;
-    }
-    .heart {
-      position: absolute;
-      font-size: 25px;
-      animation: rise 6s linear infinite;
-      opacity: 0.7;
-      bottom: -40px;
-    }
-    @keyframes fadeIn {
-      from {
+}
+
+/* Card */
+
+.card {
+    width: 90%;
+    max-width: 430px;
+    min-height: 560px;
+    padding: 40px 25px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 32px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pages */
+
+.page {
+    display: none;
+    width: 100%;
+    animation: pageIn 0.7s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageIn {
+    from {
         opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
+        transform: translateY(25px) scale(0.95);
+    }
+
+    to {
         opacity: 1;
-        transform: translateY(0);
-      }
+        transform: translateY(0) scale(1);
     }
-    @keyframes float {
-      0%, 100% {
+}
+
+/* Emoji */
+
+.emoji {
+    font-size: 70px;
+    margin-bottom: 20px;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% {
         transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
     }
-    @keyframes rise {
-      from {
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Headings */
+
+h1 {
+    font-size: 31px;
+    color: #d63384;
+    margin-bottom: 18px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+
+button {
+    border: none;
+    padding: 14px 26px;
+    margin: 6px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.next {
+    background: #d63384;
+    color: white;
+    box-shadow: 0 8px 20px rgba(214,51,132,0.25);
+}
+
+.next:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+.yes {
+    background: #ff4f91;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,79,145,0.3);
+}
+
+.yes:hover {
+    transform: scale(1.1);
+}
+
+.maybe {
+    background: #eeeeee;
+    color: #555;
+}
+
+.maybe:hover {
+    transform: scale(1.05);
+}
+
+/* Big heart */
+
+.big-heart {
+    font-size: 90px;
+    margin-bottom: 15px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(1.15);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 1;
+    animation: rise linear forwards;
+}
+
+@keyframes rise {
+    0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
-      }
-      20% {
-        opacity: 0.8;
-      }
-      to {
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
-      }
     }
-    .small {
-      font-size: 14px;
-      color: #888;
-      margin-top: 15px;
+}
+
+/* Sparkles */
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    animation: sparkleAnim 2s ease-out forwards;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0);
+        opacity: 0;
     }
-    .big-heart {
-      font-size: 90px;
-      animation: heartbeat 1s infinite;
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
     }
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.15);
-      }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
     }
-    .confetti {
-      position: fixed;
-      top: -20px;
-      font-size: 25px;
-      animation: confettiFall 4s linear forwards;
-      z-index: 10;
+}
+
+/* Confetti */
+
+.confetti {
+    position: fixed;
+    top: -30px;
+    font-size: 25px;
+    z-index: 20;
+    pointer-events: none;
+    animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
     }
-    @keyframes confettiFall {
-      to {
+
+    100% {
         transform: translateY(110vh) rotate(720deg);
-      }
     }
-  </style>
+}
+
+.small {
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+}
+
+/* Final message */
+
+.final-message {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.signature {
+    margin-top: 25px;
+    font-size: 16px;
+    color: #d63384;
+}
+
+/* Mobile */
+
+@media(max-width:480px) {
+
+    .card {
+        min-height: 530px;
+        padding: 35px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .emoji {
+        font-size: 62px;
+    }
+}
+</style>
 </head>
+
 <body>
-  <!-- Floating hearts -->
-  <div class="heart" style="left:10%; animation-delay:0s;">💗</div>
-  <div class="heart" style="left:25%; animation-delay:2s;">💕</div>
-  <div class="heart" style="left:45%; animation-delay:4s;">💖</div>
-  <div class="heart" style="left:65%; animation-delay:1s;">💗</div>
-  <div class="heart" style="left:85%; animation-delay:3s;">💕</div>
-  <div class="card">
+
+<div class="card">
+
     <!-- PAGE 1 -->
+
     <div class="page active" id="page1">
-      <div class="emoji">👀</div>
-      <h1>Hey...</h1>
-      <p>
-        I made something for you.<br>
-        Don't worry... it's not a school assignment 😭
-      </p>
-      <button class="next" onclick="showPage(2)">
-        Open it 💗
-      </button>
+
+        <div class="emoji">👀</div>
+
+        <h1>Hey Lee ❤️</h1>
+
+        <p>
+            I made something for you... 🫣
+            <br><br>
+            Don't worry, it's not a school assignment 😭
+        </p>
+
+        <button class="next" onclick="showPage(2)">
+            Open it 💗
+        </button>
+
     </div>
+
+
     <!-- PAGE 2 -->
+
     <div class="page" id="page2">
-      <div class="emoji">🫣</div>
-      <h1>Okay...</h1>
-      <p>
-        I've been wanting to tell you something
-        for a little while.
-      </p>
-      <button class="next" onclick="showPage(3)">
-        Tell me → 
-      </button>
+
+        <div class="emoji">🫣</div>
+
+        <h1>Okay Lee...</h1>
+
+        <p>
+            I've been wanting to tell you something
+            for a little while.
+            <br><br>
+            So... here goes nothing. 😭
+        </p>
+
+        <button class="next" onclick="showPage(3)">
+            Tell me → 
+        </button>
+
     </div>
+
+
     <!-- PAGE 3 -->
+
     <div class="page" id="page3">
-      <div class="emoji">😊</div>
-      <h1>You’re Special</h1>
-      <p>
-        Somehow, you became one of my favourite
-        people to talk to, think about,
-        and smile about. ❤️
-      </p>
-      <button class="next" onclick="showPage(4)">
-        Continue →
-      </button>
+
+        <div class="emoji">😊</div>
+
+        <h1>You're Special ❤️</h1>
+
+        <p>
+            Somehow, you became one of my favourite
+            people to talk to, think about,
+            and smile about.
+            <br><br>
+            And honestly... I really like that. 🫶
+        </p>
+
+        <button class="next" onclick="showPage(4)">
+            Continue →
+        </button>
+
     </div>
+
+
     <!-- PAGE 4 -->
+
     <div class="page" id="page4">
-      <div class="emoji">🫶</div>
-      <h1>So...</h1>
-      <p>
-        I guess there's only one thing left
-        to ask...
-      </p>
-      <button class="next" onclick="showPage(5)">
-        The question → 
-      </button>
+
+        <div class="emoji">🫶</div>
+
+        <h1>So... Lee</h1>
+
+        <p>
+            I've come this far...
+            <br><br>
+            I guess there's only one thing left
+            to ask. 🫣
+        </p>
+
+        <button class="next" onclick="showPage(5)">
+            The question 💌
+        </button>
+
     </div>
-    <!-- FINAL PAGE -->
+
+
+    <!-- PAGE 5 -->
+
     <div class="page" id="page5">
-      <div class="big-heart">❤️</div>
-      <h1>One Question</h1>
-      <p>
-        I really like you. 🫣<br><br>
-        Would you like to go on a date with me?
-      </p>
-      <button class="yes" onclick="sayYes()">
-        YES 💕
-      </button>
-      <button class="maybe" onclick="sayMaybe()">
-        Maybe 🙂
-      </button>
-      <div class="small">
-        No pressure. Whatever you feel is okay. ❤️
-      </div>
+
+        <div class="big-heart">❤️</div>
+
+        <h1>Lee...</h1>
+
+        <p>
+            I really like you. 🫣
+            <br><br>
+
+            Would you like to go on a date with me?
+        </p>
+
+        <button class="yes" onclick="sayYes()">
+            YES 💕
+        </button>
+
+        <button class="maybe" onclick="sayMaybe()">
+            Maybe 🙂
+        </button>
+
+        <div class="small">
+            No pressure. Whatever you feel is okay. ❤️
+        </div>
+
     </div>
+
+
     <!-- YES PAGE -->
+
     <div class="page" id="yesPage">
-      <div class="big-heart">💖</div>
-      <h1>YAY! 😭💕</h1>
-      <p>
-        Okay... now you've officially
-        made my day. 🥹
-        <br><br>
-        Let's figure out our first date! ✨
-      </p>
+
+        <div class="big-heart">💖</div>
+
+        <h1>LEE SAID YES!! 😭💕</h1>
+
+        <p class="final-message">
+            Okay...
+            <br>
+            You just made me really happy. 🥹
+            <br><br>
+            Let's figure out our first date! ✨
+        </p>
+
+        <div class="signature">
+            Made with ❤️
+        </div>
+
     </div>
+
+
     <!-- MAYBE PAGE -->
+
     <div class="page" id="maybePage">
-      <div class="emoji">😊</div>
-      <h1>That's okay ❤️</h1>
-      <p>
-        Take your time.
-        <br><br>
-        No pressure at all. I just wanted
-        you to know how I feel. 🫶
-      </p>
+
+        <div class="emoji">😊</div>
+
+        <h1>That's okay ❤️</h1>
+
+        <p>
+            Take your time, Lee.
+            <br><br>
+            No pressure at all.
+            I just wanted you to know how I feel. 🫶
+        </p>
+
+        <div class="signature">
+            ❤️
+        </div>
+
     </div>
-  </div>
-  <script>
-    function showPage(number) {
-      document.querySelectorAll(".page").forEach(page => {
+
+</div>
+
+
+<script>
+
+/* Page switching */
+
+function showPage(number) {
+
+    document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
-      });
-      document.getElementById("page" + number)
+    });
+
+    document.getElementById("page" + number)
         .classList.add("active");
-    }
-    function sayYes() {
-      document.querySelectorAll(".page").forEach(page => {
+
+    createSparkles();
+}
+
+
+/* YES */
+
+function sayYes() {
+
+    document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
-      });
-      document.getElementById("yesPage")
+    });
+
+    document.getElementById("yesPage")
         .classList.add("active");
-      createConfetti();
-    }
-    function sayMaybe() {
-      document.querySelectorAll(".page").forEach(page => {
+
+    createConfetti();
+
+    createHeartExplosion();
+}
+
+
+/* MAYBE */
+
+function sayMaybe() {
+
+    document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
-      });
-      document.getElementById("maybePage")
+    });
+
+    document.getElementById("maybePage")
         .classList.add("active");
-    }
-    function createConfetti() {
-      const emojis = ["💗", "💕", "💖", "✨", "🎉", "❤️"];
-      for (let i = 0; i < 40; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.innerText =
-          emojis[Math.floor(Math.random() * emojis.length)];
-        confetti.style.left =
-          Math.random() * 100 + "vw";
-        confetti.style.animationDuration =
-          (2 + Math.random() * 3) + "s";
-        confetti.style.animationDelay =
-          Math.random() * 1.5 + "s";
-        document.body.appendChild(confetti);
+
+}
+
+
+/* Floating hearts */
+
+function createFloatingHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = ["❤️", "💗", "💕", "💖", "💓"];
+
+    heart.innerText =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createFloatingHeart, 700);
+
+
+/* Sparkles */
+
+function createSparkles() {
+
+    for(let i = 0; i < 12; i++) {
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+        sparkle.innerText = "✨";
+
+        sparkle.style.left =
+            Math.random() * 100 + "vw";
+
+        sparkle.style.top =
+            Math.random() * 100 + "vh";
+
+        sparkle.style.fontSize =
+            (12 + Math.random() * 20) + "px";
+
+        document.body.appendChild(sparkle);
+
         setTimeout(() => {
-          confetti.remove();
-        }, 6000);
-      }
+            sparkle.remove();
+        }, 2000);
     }
-  </script>
+}
+
+
+/* Confetti */
+
+function createConfetti() {
+
+    const emojis =
+        ["💗", "💕", "💖", "❤️", "✨", "🎉", "🥳"];
+
+    for(let i = 0; i < 60; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        confetti.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 6000);
+    }
+}
+
+
+/* Heart explosion */
+
+function createHeartExplosion() {
+
+    const hearts =
+        ["❤️", "💗", "💕", "💖"];
+
+    for(let i = 0; i < 25; i++) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.innerText =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = "25px";
+        heart.style.zIndex = "30";
+        heart.style.pointerEvents = "none";
+
+        const x =
+            (Math.random() - 0.5) * 500;
+
+        const y =
+            (Math.random() - 0.5) * 500;
+
+        heart.animate(
+            [
+                {
+                    transform: "translate(-50%, -50%) scale(0)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(calc(-50% + ${x}px),
+                        calc(-50% + ${y}px)) scale(1.4)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 1200,
+                easing: "ease-out"
+            }
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1300);
+    }
+}
+
+</script>
+
 </body>
 </html>
