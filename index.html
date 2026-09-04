@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Something 💌</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #e9d5ff, #dbeafe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #333;
+    }
+    .card {
+      width: 90%;
+      max-width: 430px;
+      min-height: 520px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .emoji {
+      font-size: 65px;
+      margin-bottom: 20px;
+      animation: float 2s ease-in-out infinite;
+    }
+    h1 {
+      font-size: 30px;
+      margin-bottom: 18px;
+      color: #d63384;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    button {
+      border: none;
+      border-radius: 50px;
+      padding: 14px 25px;
+      margin: 7px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .next {
+      background: #d63384;
+      color: white;
+    }
+    .next:hover {
+      transform: scale(1.06);
+      background: #b82b70;
+    }
+    .yes {
+      background: #ff4f91;
+      color: white;
+    }
+    .yes:hover {
+      transform: scale(1.08);
+    }
+    .maybe {
+      background: #eee;
+      color: #555;
+    }
+    .maybe:hover {
+      transform: scale(1.05);
+    }
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .page.active {
+      display: block;
+    }
+    .heart {
+      position: absolute;
+      font-size: 25px;
+      animation: rise 6s linear infinite;
+      opacity: 0.7;
+      bottom: -40px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes rise {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .small {
+      font-size: 14px;
+      color: #888;
+      margin-top: 15px;
+    }
+    .big-heart {
+      font-size: 90px;
+      animation: heartbeat 1s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+    .confetti {
+      position: fixed;
+      top: -20px;
+      font-size: 25px;
+      animation: confettiFall 4s linear forwards;
+      z-index: 10;
+    }
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s;">💗</div>
+  <div class="heart" style="left:25%; animation-delay:2s;">💕</div>
+  <div class="heart" style="left:45%; animation-delay:4s;">💖</div>
+  <div class="heart" style="left:65%; animation-delay:1s;">💗</div>
+  <div class="heart" style="left:85%; animation-delay:3s;">💕</div>
+  <div class="card">
+    <!-- PAGE 1 -->
+    <div class="page active" id="page1">
+      <div class="emoji">👀</div>
+      <h1>Hey...</h1>
+      <p>
+        I made something for you.<br>
+        Don't worry... it's not a school assignment 😭
+      </p>
+      <button class="next" onclick="showPage(2)">
+        Open it 💗
+      </button>
+    </div>
+    <!-- PAGE 2 -->
+    <div class="page" id="page2">
+      <div class="emoji">🫣</div>
+      <h1>Okay...</h1>
+      <p>
+        I've been wanting to tell you something
+        for a little while.
+      </p>
+      <button class="next" onclick="showPage(3)">
+        Tell me → 
+      </button>
+    </div>
+    <!-- PAGE 3 -->
+    <div class="page" id="page3">
+      <div class="emoji">😊</div>
+      <h1>You’re Special</h1>
+      <p>
+        Somehow, you became one of my favourite
+        people to talk to, think about,
+        and smile about. ❤️
+      </p>
+      <button class="next" onclick="showPage(4)">
+        Continue →
+      </button>
+    </div>
+    <!-- PAGE 4 -->
+    <div class="page" id="page4">
+      <div class="emoji">🫶</div>
+      <h1>So...</h1>
+      <p>
+        I guess there's only one thing left
+        to ask...
+      </p>
+      <button class="next" onclick="showPage(5)">
+        The question → 
+      </button>
+    </div>
+    <!-- FINAL PAGE -->
+    <div class="page" id="page5">
+      <div class="big-heart">❤️</div>
+      <h1>One Question</h1>
+      <p>
+        I really like you. 🫣<br><br>
+        Would you like to go on a date with me?
+      </p>
+      <button class="yes" onclick="sayYes()">
+        YES 💕
+      </button>
+      <button class="maybe" onclick="sayMaybe()">
+        Maybe 🙂
+      </button>
+      <div class="small">
+        No pressure. Whatever you feel is okay. ❤️
+      </div>
+    </div>
+    <!-- YES PAGE -->
+    <div class="page" id="yesPage">
+      <div class="big-heart">💖</div>
+      <h1>YAY! 😭💕</h1>
+      <p>
+        Okay... now you've officially
+        made my day. 🥹
+        <br><br>
+        Let's figure out our first date! ✨
+      </p>
+    </div>
+    <!-- MAYBE PAGE -->
+    <div class="page" id="maybePage">
+      <div class="emoji">😊</div>
+      <h1>That's okay ❤️</h1>
+      <p>
+        Take your time.
+        <br><br>
+        No pressure at all. I just wanted
+        you to know how I feel. 🫶
+      </p>
+    </div>
+  </div>
+  <script>
+    function showPage(number) {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+      document.getElementById("page" + number)
+        .classList.add("active");
+    }
+    function sayYes() {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+      document.getElementById("yesPage")
+        .classList.add("active");
+      createConfetti();
+    }
+    function sayMaybe() {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+      document.getElementById("maybePage")
+        .classList.add("active");
+    }
+    function createConfetti() {
+      const emojis = ["💗", "💕", "💖", "✨", "🎉", "❤️"];
+      for (let i = 0; i < 40; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerText =
+          emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left =
+          Math.random() * 100 + "vw";
+        confetti.style.animationDuration =
+          (2 + Math.random() * 3) + "s";
+        confetti.style.animationDelay =
+          Math.random() * 1.5 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => {
+          confetti.remove();
+        }, 6000);
+      }
+    }
+  </script>
+</body>
+</html>
